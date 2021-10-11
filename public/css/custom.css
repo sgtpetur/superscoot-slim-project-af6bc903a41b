@@ -1,0 +1,15 @@
+/*
+  place custom CSS definitions into this file to override Bootstrap
+*/
+nav{
+	float: left;
+	margin: 25px;
+}
+
+nav ul{
+	list-style: none;
+}
+
+nav li{
+	margin: 20px;
+}

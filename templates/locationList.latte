@@ -1,0 +1,34 @@
+{extends layout.latte}
+
+{block title}
+	Locations list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+					<th>Country</th>
+					<th>City</th>
+					<th>Street name</th>
+					<th>Street number</th>
+					<th>Name</th>
+					<th>Zip</th>
+
+				</tr>
+			</thead>
+			{foreach $location_list as $p}
+				<tr> 
+					<td>{$p['country']}</td>
+					<td>{$p['city']}</td>
+					<td>{$p['street_name']}</td>
+					<td>{$p['street_number']}</td>
+					<td>{$p['name']}</td>
+					<td>{$p['zip']}</td>
+					
+				</tr>
+			{/foreach}
+		</table>
+	</div>
+{/block}

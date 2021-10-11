@@ -1,0 +1,39 @@
+{extends layout.latte}
+
+{block title}
+	Contact list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+					<th><center>Contact type</center></th>
+					<th><center>Contact adress</center></th>
+					<th><center>Edit contact</center></th>
+					<th><center>Delete contact</center></th>
+				</tr>
+			</thead>
+			{foreach $contact_list as $p}
+				<tr> 
+					<td><center>{$p['name']}</center></td>
+					<td><center>{$p['contact']}</center></td>
+					<td><center><a href="{link updateContact}?id_person={$p['id_contact']}" class="btn btn-info"><span class="fa fa-address-book"></span></a></center></td>
+					<td>
+					<form method="post" onsubmit="return confirmDelete({$p['name']} + ' ' + {$p['contact']})" action="{link contact_delete}?id_person={$p['id_person']}">
+						<center><button class="btn btn-danger"> <span class="fa fa-times-circle"></button> </span></center></td>
+				</tr>
+			{/foreach}
+			<tr><td colspan="4">
+				<a href="{link newContact}?id_person={$id_person}" class="btn btn-success">
+			<span class="fa fa-address-book"></span> Add new contact
+			</a></td></tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+		function confirmDelete(name) {
+			return confirm('Do you really want to delete ' + name + '?');
+		}
+	</script>
+{/block}

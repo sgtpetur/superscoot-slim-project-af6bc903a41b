@@ -1,0 +1,42 @@
+{extends layout.latte}
+
+{block title}
+	Meeting info
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<h1 c>Meeting info</h1>
+		<table class="table table-hover table-striped ">
+			
+					<tr>
+					<th scope="row">Start</th>
+            			<td>{$meeting_info['start']}</td>
+            		</tr>
+            		<tr>
+					<th scope="row">Duration</th>
+            			<td>{$meeting_info['duration']}</td>
+            		</tr>
+            		<tr>
+					<th scope="row">City</th>
+            			<td colspan="2">{$meeting_info['city']}</td>
+            		</tr>
+            		<tr>
+					 <th scope="row">Street Name</th>
+            			<td colspan="2">{$meeting_info['street_name']}</td>
+            		</tr>
+            		<tr>
+            		<th scope="row">Street Number</th>
+            			<td colspan="2">{$meeting_info['street_number']}</td>
+            		</tr>
+            		<tr>
+            			<th scope="row">Zip</th>
+            				<td colspan="2">{$meeting_info['zip']}</td>
+            		</tr>
+            		<tr>
+					<th scope="row">Description</th>
+            			<td>{$meeting_info['description']}</td>
+					</tr>
+		</table>
+	</div>
+{/block}

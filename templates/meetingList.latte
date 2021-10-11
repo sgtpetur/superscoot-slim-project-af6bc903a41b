@@ -1,0 +1,59 @@
+{extends layout.latte}
+
+{block title}
+	Meeting list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<h1 c>Meeting list</h1>
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+				<th>Date</th>
+                <th>ID Meeting</th>
+                <th>Description</th>
+		        <th>Location</th>
+                <th colspan="4"><center>Actions</center></th>
+				</tr>
+			</thead>
+			{foreach $meeting_list as $p}
+				<tr> 
+						<td>{$p['start']}</td>
+						<td>{$p['id_meeting']}</td>
+						<td>{$p['description']}</td>
+            			<td>{$p['id_location']}</td>
+            			<td>               			                			
+                        			<a href="{link meeting-info}?id_meeting={$p['id_meeting']}" class="btn-sm btn-success"><span class="fa fa-user"> Persons</span></a>              			
+            			</td>
+            			<td>
+                				<a href="{link meetingInfo}?id_meeting={$p['id_meeting']}" class="btn-sm btn-success">
+                    			
+                        			<span class="fa fa-info"> Info</span>
+                    			</a>
+                			
+            			</td>
+            			<td>
+                				<a href="{link editMeeting}?id_meeting={$p['id_meeting']}" class="btn-sm btn-primary">
+                    			
+                        			<span class="fa fa-edit"> Edit</span>
+                    			
+                			
+            			</td>
+						<td>
+							<form method="post" onsubmit="return confirmDelete({$p['id_meeting']})" action="{link meeting_delete}?id_meeting={$p['id_meeting']}">
+								<button class="btn btn-danger" > 
+									<span class="fa fa-times-circle"> </span> Delete
+								</button>
+							</form>
+						</td>
+				</tr>
+			{/foreach}
+		</table>
+	</div>
+<script type="text/javascript">
+		function confirmDelete(name) {
+			return confirm('Do you really want to delete ' + name + '?');
+		}
+	</script>
+{/block}

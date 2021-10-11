@@ -1,0 +1,28 @@
+{if isset($message)}
+        <p>{$message}</p>
+{/if}
+<div class="container md-5">
+    <form method="post">
+
+        <div class="form-row">
+            <div class="col-sm-3 form-group">    
+                <label for="relation_type">Relation type</label>
+                
+                <select class="form-control" type="number" name="name">
+                    {foreach $relation_list as $p}
+                        <option>{$p['name']}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="col-sm-3 form-group">
+                <label for="description">Description</label> 
+                <input class="form-control" type="text" name="description" placeholder="Description" required >
+            </div>
+        </div>
+        <br>
+                        <button type="submit" class="btn btn-success">                    
+                            <span class="fa fa-check-square" aria-hidden="true"></span> {$buttonTitle}
+                        </button>
+                       
+    </form>
+</div>

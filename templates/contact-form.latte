@@ -1,0 +1,33 @@
+
+
+
+
+
+{if isset($message)}
+        <p>{$message}</p>
+{/if}
+<div class="container md-5">
+    <form method="post">
+
+        <div class="form-row">
+            <div class="col-sm-3 form-group">    
+                <label for="name">Contact type</label>
+                
+                <select class="form-control" type="number" name="name">
+                    {foreach $contact as $p}
+                        <option {if $p['name']==$formDatass['name']}selected{/if} }>{$p['name']}</option>
+                    {/foreach}
+                </select>
+            </div>
+            <div class="col-sm-3 form-group">
+                <label for="contact">Contact address</label> 
+                <input class="form-control" type="text" name="contact" placeholder="Contact address" required value="{$formDatass['contact']}">
+            </div>
+        </div>
+        <br>
+                        <button type="submit" class="btn btn-success">                    
+                            <span class="fa fa-check-square" aria-hidden="true"></span> {$buttonTitle}
+                        </button>
+                        <input type="hidden" name="id_person" value="{$formDatass['id_person']}">
+    </form>
+</div>

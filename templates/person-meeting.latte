@@ -1,0 +1,42 @@
+{extends layout.latte}
+
+{block title}
+	Persons list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<h1 c>Persons list</h1>
+		<table width="100%">
+			<tr>
+				<form action="{link meeting_addPerson}?id_meeting={$id_meeting}" method="post">
+		<td width="100%">
+			<input type="text" name="q" class="form-control">
+		</td>
+		<td>
+			<button type="submit" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i>
+				Add person
+			</button>
+		</td>
+		</form>
+		</tr>
+		</table>
+
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					
+				</tr>
+			</thead>
+			{foreach $persons_list as $p}
+				<tr> 
+					<td>{$p['first_name']}</td>
+					<td>{$p['last_name']}</td>
+					
+				</tr>
+			{/foreach}
+		</table>
+	</div>
+{/block}

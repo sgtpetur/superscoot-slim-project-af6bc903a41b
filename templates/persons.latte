@@ -1,0 +1,68 @@
+{extends layout.latte}
+
+{block title}
+	Persons list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<h1 c>Persons list</h1>
+		<form action="{link search}" method="get">		
+			<table width="100%"><tr><td width="100%">
+			<input type="text" name="q" class="form-control"></td><td >
+			<button type="submit" class="btn btn-primary"><i class="fa fa-cog" aria-hidden="true"></i>
+				Search person
+			</button></td><td>
+			
+		</form>
+
+		<a href="{link newPerson}" class="btn btn-success">
+			<span class="fa fa-user-circle"></span> Add new person
+		</a>
+</td></tr></table>
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Height</th>
+					<th>Gender</th>
+					<th colspan="3"><center>Actions</center></th>
+				</tr>
+			</thead>
+			{foreach $persons_list as $p}
+				<tr> 
+					<td>{$p['first_name']}</td>
+					<td>{$p['last_name']}</td>
+					<td>{$p['height']}</td>
+					<td>{$p['gender']}</td>
+					<td>
+						<a href="{link contactList}?id_person={$p['id_person']}" class="btn btn-success">
+							
+								<span class="fa fa-address-book"></span> Contacts
+						</a>
+					</td>
+					<td>
+						<a href="{link updatePerson}?id_person={$p['id_person']}" class="btn btn-info">
+							
+								<span class="fa fa-edit"></span> Edit
+							
+						</a>
+					</td>
+					<td>
+						<form method="post" onsubmit="return confirmDelete({$p['first_name']} + ' ' + {$p['last_name']})" action="{link person_delete}?id_person={$p['id_person']}">
+							<button class="btn btn-danger" > 
+								<span class="fa fa-times-circle"> </span> Delete
+							</button>
+						</form>
+					</td>
+				</tr>
+			{/foreach}
+		</table>
+	</div>
+<script type="text/javascript">
+		function confirmDelete(name) {
+			return confirm('Do you really want to delete ' + name + '?');
+		}
+	</script>
+{/block}

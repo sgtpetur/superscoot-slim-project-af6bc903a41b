@@ -1,0 +1,10 @@
+{extends layout.latte}
+
+{block title}Edit meeting{/block}
+
+{block body}
+	<div class="container">
+		<h1>Edit meeting</h1>		
+	{include meeting-form.latte, buttonTitle => 'Edit'}
+	</div>
+{/block}

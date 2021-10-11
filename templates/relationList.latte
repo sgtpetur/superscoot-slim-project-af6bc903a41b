@@ -1,0 +1,41 @@
+{extends layout.latte}
+
+{block title}
+	Contact list
+{/block}
+
+{block body}
+	<div class="container md-5">
+		<table class="table table-hover table-striped ">
+			<thead class="thead-dark">
+				<tr>
+
+					<th><center>Relation</center></th>
+					<th><center>First person</center></th>
+					<th><center>Second person</center></th>
+					<th><center>Descriptioon</center></th>
+					<th colspan="2"><center>Actions</center></th>
+				</tr>
+			</thead>
+			{foreach $relation_list as $p}
+				<tr> 
+					<td><center>{$p['name']} </center></td>
+					<td><center>{$p['first_name_id1']." ".$p['last_name_id1']}</center></td>
+					<td><center>{$p['first_name_id2']." ".$p['last_name_id2']}</center></td>
+					
+					<td><center>{$p['description']} </center></td>
+					<td><center><a href="{link updateRelation}?id_relation={$p['id_relation']}" class="btn btn-info"><span class="fa fa-address-book"> Edit</span></a></center></td>
+					<td>
+					<form method="post" onsubmit="return confirmDelete({$p['first_name_id1']} + ' ' + $p{['last_name_id1']} + ' ' + '+' + ' ' + {$p['first_name_id2']} + ' ' + {$p['last_name_id2']})" action="{link relation_delete}?id_relation={$p['id_relation']}">
+						<center><button class="btn btn-danger"> <span class="fa fa-times-circle"> Delete </span></button></center></td></form>
+				</tr>
+			{/foreach}
+			
+		</table>
+	</div>
+	<script type="text/javascript">
+		function confirmDelete(name) {
+			return confirm('Do you really want to delete ' + name + '?');
+		}
+	</script>
+{/block}

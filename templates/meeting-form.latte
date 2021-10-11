@@ -1,0 +1,51 @@
+               <!-- Sem vypiseme pripadnu hlasku -->
+        {if isset($message)}
+            <p>{$message}</p>
+        {/if}
+
+        <form method="post">
+            <div class="form-row">
+                
+                <div class="col-sm-3 form-group">    
+                    <label for="first_name">Start</label>
+                    <input class="form-control" type="datetime-local" name="start" placeholder="Start" required value="{$formData['start']}">
+                </div>
+                
+                <div class="col-sm-3 form-group">
+                    <label for="last_name">Description</label> 
+                    <input class="form-control" type="text" name="description" placeholder="Description" value="{$formData['description']}">
+                </div>
+                
+                
+            </div>
+
+                
+            <div class="form-row">
+                        <div class="col-sm-4 form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" type="text" name="city" placeholder="City" value="{$formData['city']}">
+                        </div>
+                         
+                         <div class="col-sm-4 form-group">
+                            <label for="street_name">Street name</label>
+                            <input class="form-control" type="text" name="street_name" placeholder="Street name" value="{$formData['street_name']}">
+                         </div>
+                         
+                         <div class="col-sm-2 form-group">
+                            <label for="street_number">Street number</label>
+                            <input class="form-control" type="number" name="street_number" placeholder="Street number" value="{$formData['street_number']}">
+                         </div>
+
+                         <div class="col-sm-2 form-group">
+                            <label for="zip">Zip</label>
+                            <input class="form-control" type="text" name="zip" placeholder="Zip" value="{$formData['zip']}">
+                         </div>
+                    </div>
+                        
+
+                        <br>
+                        <button type="submit" class="btn btn-success">                    
+                            <span class="fa fa-check-square" aria-hidden="true"></span> {$buttonTitle}
+                        </button>
+                    </form>
+                </div>   

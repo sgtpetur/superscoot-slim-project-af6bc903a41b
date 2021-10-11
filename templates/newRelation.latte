@@ -1,0 +1,47 @@
+{extends layout.latte}
+
+{block title}
+	New relation
+{/block}
+
+{block body}
+
+	<div class="container">
+		<h1>New relation</h1>
+	<form method="post">
+            <div class="form-row">
+                
+                <div class="col-sm-3 form-group">    
+                    <label for="first_person">First person</label>
+                    <input class="form-control" type="text" name="first_person" placeholder="First person" required>
+                </div>
+               
+                <div class="col-sm-3 form-group">
+                    <label for="second_person">Second person</label> 
+                    <input class="form-control" type="text" name="second_person" placeholder="Second person" required >
+                </div>
+             
+                <div class="col-sm-3 form-group">
+                    <label for="name">Relation type</label> 
+                    <select class="form-control" type="number" name="name" required>
+                    {foreach $relation_list as $p}
+                        <option>{$p['name']}</option>
+                    {/foreach}
+                </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+               
+                <div class="col-sm-3 form-group">
+                    <label for="description">Description</label>    
+                    <input class="form-control" type="text" name="description" placeholder="Description" >
+                </div>
+             
+               </div>
+               <button type="submit" class="btn btn-success">                    
+                            <span class="fa fa-check-square" aria-hidden="true"></span> Add
+                        </button>
+           </form>  
+       </div>
+  {/block}
